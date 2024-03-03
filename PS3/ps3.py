@@ -1,9 +1,11 @@
+#!/usr/bin/env python3
+
 # 6.0001 Problem Set 3
 #
 # The 6.0001 Word Game
 # Created by: Kevin Luu <luuk> and Jenna Wiens <jwiens>
 #
-# Name          : <Ray Ogoda>
+# Name          : <Ray O>
 # Collaborators : <your collaborators>
 # Time spent    : <4 days>
 

@@ -1,5 +1,5 @@
 # Problem Set 2, hangman.py
-# Name: Ray Ogoda 
+# Name: Ray O 
 # Collaborators: 
 # Time spent: 1 night
 

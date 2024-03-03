@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "mitps"
+version = "1"
+description = "I don't know what I'm doing"
+authors = ["reiogo <raogoda2@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pyflakes = "^3.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
