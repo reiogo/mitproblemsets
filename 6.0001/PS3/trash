@@ -1,0 +1,95 @@
+
+print('this is',is_valid_word('hello', {'h': 1, 'e': 1, 'l': 2, 'o': 1,'q': 1,'u': 3 ,'a': 1,'i': 2,'l': 2,'t': 1}, ['HELLO','quail']))
+
+#
+# Make sure you understand how this function works and what it does!
+#
+def display_hand(hand):
+    """
+    Displays the letters currently in the hand.
+
+    For example:
+       display_hand({'a':1, 'x':2, 'l':3, 'e':1})
+    Should print out something like:
+       a x x l l l e
+    The order of the letters is unimportant.
+
+    hand: dictionary (string -> int)
+    """
+    
+    for letter in hand.keys():
+        for j in range(hand[letter]):
+             print(letter, end=' ')      # print all on the same line
+    print()                              # print an empty line
+
+#
+# Make sure you understand how this function works and what it does!
+# You will need to modify this for Problem #4.
+#
+def deal_hand(n):
+    """
+    Returns a random hand containing n lowercase letters.
+    ceil(n/3) letters in the hand should be VOWELS (note,
+    ceil(n/3) means the smallest integer not less than n/3).
+
+    Hands are represented as dictionaries. The keys are
+    letters and the values are the number of times the
+    particular letter is repeated in that hand.
+
+    n: int >= 0
+    returns: dictionary (string -> int)
+    """
+    
+    hand={}
+    num_vowels = int(math.ceil(n / 3))
+
+    for i in range(num_vowels-1):
+        x = random.choice(VOWELS)
+        hand[x] = hand.get(x, 0) + 1
+    # for wildcard
+    hand['*'] = hand.get('*', 0) +1
+    
+    for i in range(num_vowels, n):    
+        x = random.choice(CONSONANTS)
+        hand[x] = hand.get(x, 0) + 1
+    
+    return hand
+
+#
+# Problem #2: Update a hand by removing letters
+#
+def update_hand(hand, word):
+    """
+    Does NOT assume that hand contains every letter in word at least as
+    many times as the letter appears in word. Letters in word that don't
+    appear in hand should be ignored. Letters that appear in word more times
+    than in hand should never result in a negative count; instead, set the
+    count in the returned hand to 0 (or remove the letter from the
+    dictionary, depending on how your code is structured). 
+
+    Updates the hand: uses up the letters in the given word
+    and returns the new hand, without those letters in it.
+
+    Has no side effects: does not modify hand.
+
+    word: string
+    hand: dictionary (string -> int)    
+    returns: dictionary (string -> int)
+    """
+    # word should be lowercase
+    w = word.lower()
+    # Remove letter of word from the hand using handlist as an intermediate
+    handlist = []
+    update_hand = hand.copy()
+    pass  # TO DO... Remove this line when you implement this function
+    for l in w:
+        for i in hand.keys():
+            if l == i:
+                handlist.append(l)
+    for r in handlist:
+        if update_hand[r] >= 1:
+            update_hand[r] = update_hand.get(r,0) - 1
+    return update_hand
+
+
+

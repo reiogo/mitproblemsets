@@ -1,0 +1,37 @@
+
+
+
+
+def is_word_guessed(secret_word, letters_guessed):
+    '''
+    secret_word: string, the word the user is guessing; assumes all letters are
+      lowercase
+    letters_guessed: list (of letters), which letters have been guessed so far;
+      assumes that all letters are lowercase
+    returns: boolean, True if all the letters of secret_word are in letters_guessed;
+      False otherwise
+    '''
+    correct = ''
+    secret_word_copy = secret_word [:]
+    for l in secret_word_copy
+        for m in letter_guessed
+            if l == m
+                correct.append(m) 
+                secret_word.remove(m)
+    return  secret_word == ''
+
+def is_word_guessed(secret_word, letters_guessed):
+    '''
+    secret_word: string, the word the user is guessing; assumes all letters are
+      lowercase
+    letters_guessed: list (of letters), which letters have been guessed so far;
+      assumes that all letters are lowercase
+    returns: boolean, True if all the letters of secret_word are in letters_guessed;
+      False otherwise
+    '''
+    correct = ''
+    for l in secret_word
+        for m in letter_guessed
+            if l == m
+                correct.append(m) 
+    return correct == secret_word
