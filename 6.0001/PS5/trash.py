@@ -203,3 +203,55 @@ if __name__ =='__main__':
     test = NotTrigger('seven')
     print(test.evaluate(cuddly))
     
+
+
+
+    def line_reader(line):
+        data = line.split(',')
+        if data[0] != "ADD":
+            if data[1] == "OR" or data[1] == "AND":
+                trigger_dict[data[0]] = t_map[data[1]](trigger_dict[data[2]],
+                        trigger_dict[data[3]])
+            else:
+                trigger_dict[data[0]] = t_map[data[1]](data[2])
+        else: 
+            trigger_list[:] += [trigger_dict[t] for t in data[1:]]
+
+    for line in lines:
+        line_reader(line)
+    print("trigger_list", trigger_list)
+    print("trigger_dict: ", trigger_dict)
+
+    return trigger_list
+
+-------------------------------------------
+    # For all lines.
+    for m in lines:
+        # Define data from lines.
+        data = m.split(',')
+        print("data: ", data)
+        # If first in the list is not  an ADD then:
+        if data[0] != "ADD":
+            # If second is an OR or AND then: define trigger_dict key and value.
+            if data[1] == "OR" or data[1] == "AND":
+                # Key is t number value.
+                # Value is trigger with the two subjects.
+                trigger_dict[data[0]] = trigger_map[data[1]](trigger_dict[data[2]],
+                                        trigger_dict[data[3]])
+            else:
+                # Key is t number.
+                # Value is  trigger with data[2] as element.
+                name = str(data[0])
+                name = trigger_map[data[1]](data[2])
+                trigger_dict[data[0]] = name
+
+                # trigger_dict[data[0]] = trigger_map[data[1]](data[2])
+        else:
+            for t in data[1:]:
+                trigger_list.append(trigger_dict.get(t))
+    print("trigger_list: ", trigger_list)
+    print("trigger_dict: ", trigger_dict)
+    return trigger_list
+
+    print(lines) # for now, print it so you see what it contains!
+

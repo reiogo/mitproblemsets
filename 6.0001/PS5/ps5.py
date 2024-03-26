@@ -363,7 +363,6 @@ def filter_stories(stories, triggerlist):
 
     Returns: a list of only the stories for which a trigger in triggerlist fires.
     """
-    # (we're just returning all the stories, with no filtering)
     res = []
     for story in stories:
         for trigger in triggerlist:
@@ -396,7 +395,7 @@ def read_trigger_config(filename):
     # TODO: Problem 11
     # line is the list of lines that you need to parse and for which you need
     # to build triggers
-    t_map = {"TITLE": TitleTrigger,
+    trigger_map = {"TITLE": TitleTrigger,
             "DESCRIPTION": DescriptionTrigger,
             "AFTER": AfterTrigger,
             "BEFORE": BeforeTrigger,
@@ -407,32 +406,28 @@ def read_trigger_config(filename):
 
     trigger_dict = {}
     trigger_list = []
+    
 
+    # For all lines.
     for m in lines:
         # Define data from lines.
         data = m.split(',')
-        print("data: ", data)
-        # If not  an ADD then:
+        # If first in the list is not  an ADD then:
         if data[0] != "ADD":
-            # If an OR or AND then: define trigger_dict key and value.
+            # If second is an OR or AND then: define trigger_dict key and value.
             if data[1] == "OR" or data[1] == "AND":
                 # Key is t number value.
                 # Value is trigger with the two subjects.
-                trigger_dict[data[0]] = t_map[data[1]](trigger_dict[data[2]],
+                trigger_dict[data[0]] = trigger_map[data[1]](trigger_dict[data[2]],
                                         trigger_dict[data[3]])
             else:
                 # Key is t number.
                 # Value is  trigger with data[2] as element.
-                trigger_dict[data[0]] = t_map[data[1]](data[2])
+                trigger_dict[data[0]] = trigger_map[data[1]](data[2])
         else:
             for t in data[1:]:
-                res = trigger_list.append(t)
-
-        print("trigger_list: ", trigger_list)
-        print("trigger_dict: ", trigger_dict)
-    return res
-
-    print(lines) # for now, print it so you see what it contains!
+                trigger_list.append(trigger_dict.get(t))
+    return trigger_list
 
 
 
@@ -442,7 +437,7 @@ def main_thread(master):
     # A sample trigger list - you might need to change the phrases to correspond
     # to what is currently in the news
     try:
-        t1 = TitleTrigger("Congress")
+        t1 = TitleTrigger("Trump")
         t2 = DescriptionTrigger("Trump")
         t3 = DescriptionTrigger("AI")
         t4 = AndTrigger(t2, t3)
@@ -460,7 +455,7 @@ def main_thread(master):
         scrollbar = Scrollbar(master)
         scrollbar.pack(side=RIGHT,fill=Y)
 
-        t = "Google & Yahoo Top News"
+        t = "Google News"
         title = StringVar()
         title.set(t)
         ttl = Label(master, textvariable=title, font=("Helvetica", 18))
