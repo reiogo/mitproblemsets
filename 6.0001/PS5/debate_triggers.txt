@@ -1,0 +1,24 @@
+//debate trigger file, hopefully this will work
+
+//title trigger named t1
+t1,TITLE,Trump
+
+//description trigger named t2
+//t2,DESCRIPTION,bridge
+
+//Before trigger named t4
+t4,BEFORE,26 Mar 2024 3:00:00
+
+//after trigger named t5
+//t5,AFTER,26 Mar 2024 3:00:00
+
+//composite named t6
+t6,AND,t1,t4
+
+//composite named t7
+//t7,AND,t4,t5
+
+//composited named t8
+//t8,AND,t6,t7
+// the trigger list contains all
+ADD,t6

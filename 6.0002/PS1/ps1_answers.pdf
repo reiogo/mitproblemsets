@@ -1,0 +1,9 @@
+1. What were your results from compare_cow_transport_algorithms? Which algorithm runs faster? Why?
+    The greedy algorithm ran nearly a thousand times faster than the brute force algorithm.
+    The brute force algorithm creates all possible sets of cows that work. The greedy only creates one set.
+2. Does the greedy algorithm return the optimal solution? Why/why not?
+    No it does not, it gives a fast and good estimate of the optimal but it is not necessarily the optimal solution.
+    It does not create the best solution, it puts the best possible choice at each step.
+    Because of that it is unable to create the best possible solution.
+3. Does the brute force algorithm return the optimal solution? Why/why not?
+    It does produce the optimal solution, because the algorithm creates all possible solutions and finds the best solution.
